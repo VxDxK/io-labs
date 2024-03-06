@@ -26,5 +26,11 @@
 ```
 $ sudo -s
 $ cat /dev/var4
+
 $ echo " my string " >> /dev/var4
+$ cat /dev/var4
+3
+$ echo " one" >> /dev/var4
+$ cat /dev/var4
+3 1
 ```
