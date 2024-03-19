@@ -175,6 +175,6 @@ static void __exit ch_drv_exit(void)
 module_init(ch_drv_init);
 module_exit(ch_drv_exit);
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Author");
-MODULE_DESCRIPTION("The first kernel module");
+MODULE_LICENSE("WTFPL");
+MODULE_AUTHOR("VxDxK & Kyoto");
+MODULE_DESCRIPTION("IO course lab 1");

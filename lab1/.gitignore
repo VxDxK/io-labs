@@ -4,3 +4,9 @@
 *.symvers
 *.order
 *.mod*
+*.o.d
+.idea/
+*.mod.c
+Module.symvers
+modules.order
+compile_commands.json
