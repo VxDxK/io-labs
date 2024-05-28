@@ -376,6 +376,7 @@ void __exit vramdisk_drive_exit(void) {
 
 module_init(vramdisk_drive_init);
 module_exit(vramdisk_drive_exit);
-MODULE_LICENSE("Dual MIT/GPL");
-MODULE_AUTHOR("Bitway");
-MODULE_DESCRIPTION("BLOCK DRIVER");
+
+MODULE_LICENSE("WTFPL");
+MODULE_AUTHOR("VxDxK & Kyoto");
+MODULE_DESCRIPTION("IO-LAB-2 (BLOCK DRIVER)");

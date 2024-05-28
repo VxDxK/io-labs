@@ -177,4 +177,4 @@ module_exit(ch_drv_exit);
 
 MODULE_LICENSE("WTFPL");
 MODULE_AUTHOR("VxDxK & Kyoto");
-MODULE_DESCRIPTION("IO course lab 1");
+MODULE_DESCRIPTION("IO-LAB-1 (SYMBOL DRIVER)");
