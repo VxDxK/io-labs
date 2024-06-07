@@ -4,11 +4,9 @@
 
 **Цель работы:** получить знания и навыки разработки драйверов сетевых интерфейсов для операционной системы Linux.
 
-
-
 ## Описание функциональности драйвера
-Пакеты протокола UDP, содержащие конкретные данные (строку).
-Вывести строку. Содержимое строки определяется исполнителями.
+Пакеты протокола UDP, содержащие конкретные данные (строку `this packet`).
+Вывести строку.
 
 Состояние разбора пакетов необходимо выводить в кольцевой
 буфер ядра.
@@ -27,39 +25,31 @@
 
 
 ## Примеры использования
-Для тестирования использовался [rup](https://github.com/svart/rup)
+Для тестирования использовался `netcat` (a.k.a `nc`)
 
+Сервер:
 ```
-> ./rup server 0.0.0.0:13488
-...
-
----
-
-> ./rup client 127.0.0.1:1488
-seq: 0 rtt: 700.466µs
-seq: 1 rtt: 221.257µs
-seq: 2 rtt: 422.489µs
-seq: 3 rtt: 473.599µs
-RTT statistics:
-min = 221.257µs
-med = 473.599µs
-avg = 454.452µs
-std_dev = 170.507µs
-max = 700.466µs
-
+vxdxk@hucpa:~ $ netcat -u -l -p 1337
+lol just package
+lol package with this packet
 ```
 
+Клиент:
 ```
-[   38.444870] virt_net_if: loading out-of-tree module taints kernel.
-[   38.444951] virt_net_if: module verification failed: signature and/or required key missing - tainting kernel
-[   38.446549] Module virt_net_if loaded
-[   38.446554] virt_net_if: create link vni0
-[   38.446557] virt_net_if: registered rx handler for lo
-[  252.688625] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  252.688908] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  253.689853] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  253.689971] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  254.691589] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  254.691804] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
-[  255.692547] Captured IPv4 packet, source: 127.0.0.1, destination: 127.0.0.1
+vxdxk@hucpa:~ $ netcat -u localhost 1337
+lol just package
+lol package with this packet
+```
+
+Логи драйвера:
+```
+vxdxk@hucpa:~/lab3 $ sudo dmesg
+[  254.653537] virt_net_if: loading out-of-tree module taints kernel.
+[  254.653629] virt_net_if: module verification failed: signature and/or required key missing - tainting kernel
+[  254.655292] Module virt_net_if loaded
+[  254.655296] virt_net_if: create link vni0
+[  254.655299] virt_net_if: registered rx handler for lo
+[  350.296619] Captured IPv4 with UDP packet, source: 127.0.0.1:51845, destination: 127.0.0.1:1337
+                 data length: 29, data: lol package with this packet
+
 ```
